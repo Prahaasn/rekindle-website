@@ -29,8 +29,6 @@
     font-weight: $font-medium;
     color: $text-light;
     line-height: $leading-tight;
-    opacity: 0;
-    transform: translateY(30px);
     will-change: transform, opacity, filter;
 
     @include mobile {
