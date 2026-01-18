@@ -188,43 +188,4 @@
     }
   }
 
-  // Toast notification
-  &__toast {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    display: flex;
-    align-items: center;
-    gap: $space-sm;
-    padding: $space-md $space-lg;
-    background: white;
-    border-radius: $radius-lg;
-    box-shadow: $shadow-medium;
-    z-index: $z-toast;
-
-    @include mobile {
-      left: 24px;
-      right: 24px;
-      bottom: 16px;
-    }
-  }
-
-  &__toast-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    background: $accent-orange;
-    color: white;
-    border-radius: $radius-full;
-    font-size: $text-xs;
-    font-weight: $font-bold;
-  }
-
-  &__toast-text {
-    font-family: $font-body;
-    font-size: $text-sm;
-    color: $text-dark;
-  }
 }

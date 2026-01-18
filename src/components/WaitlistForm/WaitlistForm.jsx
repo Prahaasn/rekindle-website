@@ -1,49 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import confetti from 'canvas-confetti'
 import './WaitlistForm.scss'
-
-// Mock social proof data
-const mockSignups = [
-  { name: 'Alex', city: 'Seattle' },
-  { name: 'Jordan', city: 'New York' },
-  { name: 'Sam', city: 'Los Angeles' },
-  { name: 'Casey', city: 'Chicago' },
-  { name: 'Morgan', city: 'Austin' },
-  { name: 'Riley', city: 'Denver' },
-  { name: 'Taylor', city: 'Miami' },
-  { name: 'Quinn', city: 'Boston' },
-]
 
 const WaitlistForm = () => {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState('idle') // idle | loading | success | error
   const [error, setError] = useState('')
-  const [toast, setToast] = useState(null)
-
-  // Show random social proof toasts
-  useEffect(() => {
-    if (status === 'success') return
-
-    const showToast = () => {
-      const randomSignup = mockSignups[Math.floor(Math.random() * mockSignups.length)]
-      setToast(randomSignup)
-
-      setTimeout(() => setToast(null), 4000)
-    }
-
-    // Show first toast after 3 seconds, then every 8-12 seconds
-    const initialTimeout = setTimeout(showToast, 3000)
-
-    const interval = setInterval(() => {
-      showToast()
-    }, 8000 + Math.random() * 4000)
-
-    return () => {
-      clearTimeout(initialTimeout)
-      clearInterval(interval)
-    }
-  }, [status])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -210,23 +173,6 @@ const WaitlistForm = () => {
         </AnimatePresence>
       </div>
 
-      {/* Social proof toast */}
-      <AnimatePresence>
-        {toast && (
-          <motion.div
-            initial={{ x: 100, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: 100, opacity: 0 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-            className="waitlist__toast"
-          >
-            <span className="waitlist__toast-icon">✓</span>
-            <span className="waitlist__toast-text">
-              {toast.name} from {toast.city} just joined
-            </span>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   )
 }
