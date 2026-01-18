@@ -1,0 +1,17 @@
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.05);
+  z-index: $z-fixed;
+  pointer-events: none;
+
+  &__bar {
+    height: 100%;
+    background: $gradient-fire;
+    transition: width 0.1s ease-out;
+    will-change: width;
+  }
+}

@@ -1,0 +1,222 @@
+.product-reveal {
+  position: relative;
+  min-height: 300vh;
+  background: $bg-cream;
+  padding: $space-4xl 0;
+  @include grain-overlay;
+
+  &__header {
+    text-align: center;
+    padding: $space-4xl $space-xl;
+  }
+
+  &__logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-sm;
+    margin-bottom: $space-lg;
+  }
+
+  &__logo-text {
+    font-family: $font-display;
+    font-size: $text-4xl;
+    font-weight: $font-medium;
+    color: $text-dark;
+
+    @include mobile {
+      font-size: $text-2xl;
+    }
+  }
+
+  &__fire {
+    display: flex;
+    gap: 2px;
+  }
+
+  &__flame {
+    font-size: $text-lg;
+    animation: fireFlicker 0.5s ease-in-out infinite;
+
+    @for $i from 1 through 7 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.1}s;
+      }
+    }
+  }
+
+  &__tagline {
+    font-family: $font-body;
+    font-size: $text-xl;
+    color: $text-dark-secondary;
+
+    @include mobile {
+      font-size: $text-lg;
+    }
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-4xl;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $space-xl;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: $space-2xl;
+    }
+  }
+
+  &__features {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4xl;
+    padding: $space-4xl 0;
+
+    @include mobile {
+      order: 2;
+    }
+  }
+
+  &__feature {
+    padding: $space-xl;
+    border-radius: $radius-xl;
+    transition: all 0.4s $ease-out-expo;
+    opacity: 0.4;
+
+    &.active {
+      opacity: 1;
+      background: rgba(249, 115, 22, 0.05);
+      transform: translateX(10px);
+    }
+  }
+
+  &__feature-number {
+    font-family: $font-mono;
+    font-size: $text-sm;
+    color: $accent-orange;
+    margin-bottom: $space-sm;
+  }
+
+  &__feature-title {
+    font-family: $font-display;
+    font-size: $text-2xl;
+    color: $text-dark;
+    margin-bottom: $space-sm;
+
+    @include mobile {
+      font-size: $text-xl;
+    }
+  }
+
+  &__feature-description {
+    font-family: $font-body;
+    font-size: $text-base;
+    color: $text-dark-secondary;
+    line-height: $leading-relaxed;
+  }
+
+  &__phone-container {
+    position: sticky;
+    top: 20vh;
+    height: fit-content;
+    @include flex-center;
+    perspective: 1000px;
+
+    @include mobile {
+      order: 1;
+      position: relative;
+      top: 0;
+    }
+  }
+
+  &__phone {
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+
+  &__phone-frame {
+    position: relative;
+    width: 280px;
+    height: 580px;
+    background: $bg-dark;
+    border-radius: 40px;
+    padding: 12px;
+    box-shadow:
+      0 50px 100px -20px rgba(0, 0, 0, 0.3),
+      0 30px 60px -30px rgba(0, 0, 0, 0.4),
+      inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+
+    @include mobile {
+      width: 240px;
+      height: 500px;
+      border-radius: 32px;
+    }
+  }
+
+  &__phone-notch {
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 28px;
+    background: $bg-dark;
+    border-radius: 20px;
+    z-index: 10;
+
+    @include mobile {
+      width: 80px;
+      height: 24px;
+    }
+  }
+
+  &__phone-screen {
+    width: 100%;
+    height: 100%;
+    background: $bg-cream;
+    border-radius: 32px;
+    overflow: hidden;
+
+    @include mobile {
+      border-radius: 26px;
+    }
+  }
+
+  &__screen-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__app-header {
+    padding: $space-3xl $space-lg $space-lg;
+    text-align: center;
+  }
+
+  &__day {
+    font-family: $font-mono;
+    font-size: $text-sm;
+    color: $accent-orange;
+    background: rgba(249, 115, 22, 0.1);
+    padding: $space-xs $space-md;
+    border-radius: $radius-full;
+  }
+
+  &__app-body {
+    flex: 1;
+    @include flex-center;
+    padding: $space-xl;
+  }
+
+  &__prompt {
+    font-family: $font-display;
+    font-size: $text-lg;
+    color: $text-dark;
+    text-align: center;
+    line-height: $leading-relaxed;
+    animation: fadeIn 0.4s ease-out;
+  }
+}

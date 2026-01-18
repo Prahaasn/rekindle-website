@@ -1,0 +1,118 @@
+.testimonials {
+  position: relative;
+  min-height: 100vh;
+  background: $bg-dark;
+  @include flex-center;
+  @include grain-overlay;
+
+  &__container {
+    width: 100%;
+    max-width: 900px;
+    padding: $space-4xl $space-xl;
+    text-align: center;
+  }
+
+  &__content {
+    min-height: 300px;
+    @include flex-center;
+    margin-bottom: $space-3xl;
+  }
+
+  &__item {
+    width: 100%;
+  }
+
+  &__quote {
+    font-family: $font-display;
+    font-size: $text-3xl;
+    font-weight: $font-regular;
+    font-style: italic;
+    color: $text-light;
+    line-height: $leading-relaxed;
+    margin-bottom: $space-2xl;
+
+    @include mobile {
+      font-size: $text-2xl;
+    }
+  }
+
+  &__attribution {
+    display: flex;
+    flex-direction: column;
+    gap: $space-xs;
+  }
+
+  &__names {
+    font-family: $font-body;
+    font-size: $text-lg;
+    font-weight: $font-semibold;
+    color: $text-light;
+  }
+
+  &__location {
+    font-family: $font-body;
+    font-size: $text-sm;
+    color: $text-light-muted;
+  }
+
+  &__relationship {
+    font-family: $font-body;
+    font-size: $text-sm;
+    color: $accent-orange;
+    font-weight: $font-medium;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $space-xl;
+  }
+
+  &__arrow {
+    @include button-reset;
+    width: 48px;
+    height: 48px;
+    border-radius: $radius-full;
+    background: rgba(255, 255, 255, 0.1);
+    color: $text-light;
+    font-size: $text-lg;
+    transition: all $transition-base;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    gap: $space-sm;
+  }
+
+  &__dot {
+    @include button-reset;
+    width: 10px;
+    height: 10px;
+    border-radius: $radius-full;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all $transition-base;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    &.active {
+      background: $accent-orange;
+      width: 24px;
+    }
+  }
+}

@@ -1,0 +1,83 @@
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: $bg-cream;
+
+  &__background {
+    @include absolute-fill;
+    background: radial-gradient(
+      ellipse at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(254, 215, 170, 0.2) 0%,
+      transparent 50%
+    );
+    transition: background 0.3s ease;
+    pointer-events: none;
+
+    &::before {
+      content: '';
+      @include absolute-fill;
+      background: $gradient-glow;
+      opacity: 0.5;
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    will-change: transform, opacity;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: $text-hero;
+    font-weight: $font-medium;
+    line-height: $leading-tight;
+    color: $text-dark;
+    perspective: 1000px;
+
+    .word {
+      display: inline-block;
+      opacity: 0;
+      transform-origin: center bottom;
+      will-change: transform, opacity;
+    }
+
+    @include mobile {
+      font-size: $text-4xl;
+    }
+  }
+
+  &__scroll-indicator {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-sm;
+    opacity: 0;
+    z-index: 2;
+  }
+
+  &__scroll-text {
+    font-family: $font-body;
+    font-size: $text-sm;
+    font-weight: $font-medium;
+    color: $text-dark-muted;
+    letter-spacing: $tracking-wide;
+    text-transform: lowercase;
+  }
+
+  &__scroll-arrow {
+    font-size: $text-lg;
+    color: $text-dark-muted;
+    animation: float 2s ease-in-out infinite;
+  }
+}

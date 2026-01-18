@@ -1,0 +1,136 @@
+.problem-section {
+  position: relative;
+  overflow: hidden;
+  background: $bg-cream-dark;
+
+  &__container {
+    display: flex;
+    width: 400vw; // 4 panels * 100vw
+    height: 100vh;
+  }
+
+  &__progress {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+
+  &__progress-track {
+    width: 200px;
+    height: 2px;
+    background: rgba($text-dark, 0.1);
+    border-radius: $radius-full;
+    overflow: hidden;
+  }
+
+  &__progress-bar {
+    width: 25%;
+    height: 100%;
+    background: $gradient-fire;
+    border-radius: $radius-full;
+    transition: width 0.3s ease;
+  }
+}
+
+.problem-panel {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  @include flex-center;
+  @include grain-overlay;
+
+  &__content {
+    text-align: center;
+    max-width: 800px;
+    padding: $space-xl;
+  }
+
+  &__text {
+    font-family: $font-display;
+    font-size: $text-3xl;
+    font-weight: $font-medium;
+    color: $text-dark;
+    line-height: $leading-snug;
+    margin-bottom: $space-lg;
+
+    @include mobile {
+      font-size: $text-2xl;
+    }
+  }
+
+  &__subtext {
+    font-family: $font-body;
+    font-size: $text-lg;
+    color: $text-dark-secondary;
+    line-height: $leading-relaxed;
+
+    @include mobile {
+      font-size: $text-base;
+    }
+  }
+
+  &__number {
+    position: absolute;
+    bottom: 48px;
+    right: 48px;
+    font-family: $font-mono;
+    font-size: $text-sm;
+    color: $text-dark-muted;
+    opacity: 0.5;
+
+    @include mobile {
+      bottom: 100px;
+      right: 24px;
+    }
+  }
+
+  // Unique styling for each panel
+  &:nth-child(1) {
+    background: linear-gradient(135deg, $bg-cream 0%, $bg-cream-dark 100%);
+  }
+
+  &:nth-child(2) {
+    background: linear-gradient(135deg, $bg-cream-dark 0%, #FFF0E6 100%);
+  }
+
+  &:nth-child(3) {
+    background: linear-gradient(135deg, #FFF0E6 0%, #FFE8D6 100%);
+  }
+
+  &:nth-child(4) {
+    background: linear-gradient(135deg, #FFE8D6 0%, $bg-dark 100%);
+
+    .problem-panel__text,
+    .problem-panel__subtext {
+      color: $text-light;
+    }
+
+    .problem-panel__subtext {
+      color: $text-light-muted;
+    }
+
+    .problem-panel__number {
+      color: $text-light-muted;
+    }
+  }
+}
+
+// Mobile: Convert to vertical scroll
+@include mobile {
+  .problem-section {
+    &__container {
+      flex-direction: column;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .problem-panel {
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+  }
+}

@@ -1,0 +1,81 @@
+.urgency {
+  position: relative;
+  min-height: 100vh;
+  background: $bg-cream;
+  @include flex-center;
+  overflow: hidden;
+
+  &__background {
+    @include absolute-fill;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(249, 115, 22, 0.05) 0%,
+      transparent 60%
+    );
+    animation: pulseSoft 4s ease-in-out infinite;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: $space-4xl $space-xl;
+  }
+
+  &__text {
+    margin-bottom: $space-4xl;
+  }
+
+  &__text-line {
+    font-family: $font-display;
+    font-size: $text-4xl;
+    font-weight: $font-medium;
+    color: $text-dark;
+    line-height: $leading-tight;
+    margin-bottom: $space-sm;
+
+    @include mobile {
+      font-size: $text-2xl;
+    }
+
+    &--emphasis {
+      color: $accent-orange;
+      font-style: italic;
+    }
+  }
+
+  &__counter-box {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-sm;
+    padding: $space-xl $space-3xl;
+    background: white;
+    border-radius: $radius-2xl;
+    box-shadow: $shadow-medium, 0 0 30px rgba(249, 115, 22, 0.2);
+    transition: box-shadow 0.3s ease;
+  }
+
+  &__fire {
+    font-size: $text-2xl;
+  }
+
+  &__counter {
+    font-family: $font-display;
+    font-size: $text-5xl;
+    font-weight: $font-bold;
+    color: $text-dark;
+    line-height: 1;
+
+    @include mobile {
+      font-size: $text-4xl;
+    }
+  }
+
+  &__counter-label {
+    font-family: $font-body;
+    font-size: $text-base;
+    font-weight: $font-medium;
+    color: $text-dark-secondary;
+  }
+}

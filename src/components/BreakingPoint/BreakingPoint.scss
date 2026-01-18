@@ -1,0 +1,56 @@
+.breaking-point {
+  position: relative;
+  min-height: 400vh;
+  background: $bg-dark;
+  transition: background-color 0.5s ease;
+
+  &__sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    @include flex-center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $space-lg;
+    text-align: center;
+    padding: $space-xl;
+    max-width: 900px;
+  }
+
+  &__line {
+    font-family: $font-display;
+    font-size: $text-4xl;
+    font-weight: $font-medium;
+    color: $text-light;
+    line-height: $leading-tight;
+    opacity: 0;
+    transform: translateY(30px);
+    will-change: transform, opacity, filter;
+
+    @include mobile {
+      font-size: $text-2xl;
+    }
+
+    // First line gets special treatment
+    &:first-child {
+      font-size: $text-5xl;
+      color: $accent-orange;
+
+      @include mobile {
+        font-size: $text-3xl;
+      }
+    }
+
+    // Last line with emphasis
+    &:last-child {
+      font-style: italic;
+      color: $text-light-secondary;
+    }
+  }
+}

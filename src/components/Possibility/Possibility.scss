@@ -1,0 +1,128 @@
+.possibility {
+  position: relative;
+  min-height: 200vh;
+  background: $bg-cream;
+  overflow: hidden;
+  @include grain-overlay;
+
+  &__background {
+    @include absolute-fill;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &__blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    will-change: transform;
+
+    &--1 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.4) 0%, transparent 70%);
+      top: 10%;
+      left: -10%;
+
+      @include mobile {
+        width: 300px;
+        height: 300px;
+      }
+    }
+
+    &--2 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(249, 115, 22, 0.3) 0%, transparent 70%);
+      top: 30%;
+      right: -5%;
+
+      @include mobile {
+        width: 250px;
+        height: 250px;
+      }
+    }
+
+    &--3 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(234, 88, 12, 0.25) 0%, transparent 70%);
+      bottom: 20%;
+      left: 20%;
+
+      @include mobile {
+        width: 350px;
+        height: 350px;
+      }
+    }
+
+    &--4 {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(251, 146, 60, 0.35) 0%, transparent 70%);
+      bottom: 10%;
+      right: 15%;
+
+      @include mobile {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 200vh;
+    padding: $space-xl;
+  }
+
+  &__text {
+    text-align: center;
+    margin: 30vh 0;
+
+    h2 {
+      font-family: $font-display;
+      font-size: $text-5xl;
+      font-weight: $font-medium;
+      color: $text-dark;
+      line-height: $leading-tight;
+      margin-bottom: $space-md;
+
+      @include mobile {
+        font-size: $text-3xl;
+      }
+    }
+
+    p {
+      font-family: $font-display;
+      font-size: $text-3xl;
+      color: $accent-orange;
+      font-style: italic;
+
+      @include mobile {
+        font-size: $text-2xl;
+      }
+    }
+
+    &--1 {
+      h2 {
+        color: $text-dark-secondary;
+      }
+    }
+
+    &--2 {
+      h2 {
+        color: $text-dark;
+      }
+
+      p {
+        color: $accent-orange-dark;
+      }
+    }
+  }
+}

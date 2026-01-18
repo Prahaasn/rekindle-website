@@ -1,0 +1,230 @@
+.waitlist {
+  position: relative;
+  min-height: 100vh;
+  background: $bg-cream;
+  @include flex-center;
+  @include grain-overlay;
+
+  &__container {
+    width: 100%;
+    max-width: 500px;
+    padding: $space-4xl $space-xl;
+    text-align: center;
+  }
+
+  &__logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-sm;
+    margin-bottom: $space-3xl;
+  }
+
+  &__logo-text {
+    font-family: $font-display;
+    font-size: $text-3xl;
+    font-weight: $font-medium;
+    color: $text-dark;
+  }
+
+  &__fire {
+    display: flex;
+    gap: 2px;
+  }
+
+  &__flame {
+    font-size: $text-base;
+    animation: fireFlicker 0.5s ease-in-out infinite;
+
+    @for $i from 1 through 7 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.1}s;
+      }
+    }
+  }
+
+  &__form-container {
+    width: 100%;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: $text-4xl;
+    font-weight: $font-medium;
+    color: $text-dark;
+    line-height: $leading-tight;
+    margin-bottom: $space-2xl;
+
+    @include mobile {
+      font-size: $text-3xl;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+  }
+
+  &__input-group {
+    position: relative;
+  }
+
+  &__input {
+    @include input-base;
+    padding: $space-lg $space-xl;
+    font-size: $text-lg;
+    border: 2px solid rgba($text-dark, 0.1);
+
+    &:focus {
+      border-color: $accent-orange;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  &__error {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: $space-xs;
+    font-size: $text-sm;
+    color: $accent-red;
+  }
+
+  &__button {
+    @include button-primary;
+    padding: $space-lg $space-xl;
+    font-size: $text-lg;
+    width: 100%;
+  }
+
+  &__loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $space-sm;
+  }
+
+  &__spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  &__privacy {
+    margin-top: $space-lg;
+    font-family: $font-body;
+    font-size: $text-sm;
+    color: $text-dark-muted;
+  }
+
+  // Success state
+  &__success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-lg;
+  }
+
+  &__success-emoji {
+    font-size: 4rem;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  &__success-title {
+    font-family: $font-display;
+    font-size: $text-4xl;
+    font-weight: $font-medium;
+    color: $text-dark;
+
+    @include mobile {
+      font-size: $text-3xl;
+    }
+  }
+
+  &__success-text {
+    font-family: $font-body;
+    font-size: $text-lg;
+    color: $text-dark-secondary;
+    line-height: $leading-relaxed;
+  }
+
+  &__share-button {
+    @include button-reset;
+    padding: $space-md $space-xl;
+    background: rgba($accent-orange, 0.1);
+    color: $accent-orange;
+    font-weight: $font-semibold;
+    border-radius: $radius-lg;
+    transition: all $transition-base;
+
+    &:hover {
+      background: rgba($accent-orange, 0.2);
+    }
+  }
+
+  &__social {
+    display: flex;
+    gap: $space-md;
+    margin-top: $space-md;
+
+    button {
+      @include button-reset;
+      padding: $space-sm $space-md;
+      font-size: $text-sm;
+      color: $text-dark-muted;
+      transition: color $transition-fast;
+
+      &:hover {
+        color: $accent-orange;
+      }
+    }
+  }
+
+  // Toast notification
+  &__toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    padding: $space-md $space-lg;
+    background: white;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-medium;
+    z-index: $z-toast;
+
+    @include mobile {
+      left: 24px;
+      right: 24px;
+      bottom: 16px;
+    }
+  }
+
+  &__toast-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: $accent-orange;
+    color: white;
+    border-radius: $radius-full;
+    font-size: $text-xs;
+    font-weight: $font-bold;
+  }
+
+  &__toast-text {
+    font-family: $font-body;
+    font-size: $text-sm;
+    color: $text-dark;
+  }
+}

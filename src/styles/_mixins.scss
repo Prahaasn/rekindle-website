@@ -1,0 +1,229 @@
+// ===========================================
+// REKINDLE MIXINS
+// ===========================================
+
+// -----------------------------
+// LAYOUT
+// -----------------------------
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin absolute-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// -----------------------------
+// SECTIONS
+// -----------------------------
+
+@mixin section-padding {
+  padding: clamp(80px, 15vh, 160px) clamp(24px, 5vw, 120px);
+}
+
+@mixin section-full-height {
+  min-height: 100vh;
+  width: 100%;
+}
+
+@mixin container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $space-lg;
+}
+
+// -----------------------------
+// RESPONSIVE
+// -----------------------------
+
+@mixin mobile {
+  @media (max-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin large-desktop {
+  @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
+// -----------------------------
+// SCROLL
+// -----------------------------
+
+@mixin smooth-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+@mixin hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// -----------------------------
+// EFFECTS
+// -----------------------------
+
+@mixin grain-overlay {
+  &::after {
+    content: '';
+    @include absolute-fill;
+    background-image: url('/src/assets/grain.svg');
+    background-repeat: repeat;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+@mixin glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@mixin text-gradient {
+  background: $gradient-fire;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// -----------------------------
+// TYPOGRAPHY
+// -----------------------------
+
+@mixin text-reveal {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &.revealed {
+    clip-path: inset(0 0% 0 0);
+  }
+}
+
+@mixin text-glow {
+  text-shadow:
+    0 0 10px rgba(249, 115, 22, 0.3),
+    0 0 30px rgba(249, 115, 22, 0.2),
+    0 0 60px rgba(249, 115, 22, 0.1);
+}
+
+// -----------------------------
+// BUTTONS
+// -----------------------------
+
+@mixin button-reset {
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+@mixin button-primary {
+  @include button-reset;
+  @include flex-center;
+  gap: $space-sm;
+  padding: $space-md $space-xl;
+  background: $gradient-fire;
+  color: white;
+  font-family: $font-body;
+  font-weight: 600;
+  font-size: $text-base;
+  border-radius: $radius-full;
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-glow;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+// -----------------------------
+// INPUTS
+// -----------------------------
+
+@mixin input-base {
+  width: 100%;
+  padding: $space-md $space-lg;
+  font-family: $font-body;
+  font-size: $text-base;
+  color: $text-dark;
+  background: white;
+  border: 2px solid transparent;
+  border-radius: $radius-lg;
+  transition: border-color $transition-base, box-shadow $transition-base;
+
+  &::placeholder {
+    color: $text-dark-muted;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $accent-orange;
+    box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.1);
+  }
+}
