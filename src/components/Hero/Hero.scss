@@ -43,9 +43,9 @@
 
     .word {
       display: inline-block;
-      opacity: 0;
       transform-origin: center bottom;
       will-change: transform, opacity;
+      // Animation handles opacity - starts visible as fallback
     }
 
     @include mobile {
@@ -62,7 +62,6 @@
     flex-direction: column;
     align-items: center;
     gap: $space-sm;
-    opacity: 0;
     z-index: 2;
   }
 
